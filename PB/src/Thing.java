@@ -6,6 +6,10 @@ public class Thing {
 	public boolean Pushed(Direction d, Worker w){
 		return true;
 	}
+
+	public boolean AbleToTriggerSwitch(){
+	
+	}
 	
 	public void GoToHole(){
 		
