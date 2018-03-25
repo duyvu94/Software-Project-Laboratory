@@ -1,0 +1,17 @@
+8 8 // Size
+3 3 // Oil container and honey container of each player
+2 // Strength of each player
+########
+#.W....#
+#....W.#
+#..B...#
+#...B..#
+#.S..F.#
+#...H..#
+########
+1 // Oil positions
+2 2
+1 // Honey positions
+3 3
+1 // Connections between holes and switches
+6 3 7 5 // Switch's position and hole's position
