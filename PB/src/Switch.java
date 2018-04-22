@@ -1,27 +1,30 @@
 
 public class Switch extends Field{
 	private Hole holes[] = new Hole[100];
+	private int numberOfHoles = 0;
+	
+	public void addHole(Hole h){
+		holes[numberOfHoles++] = h;
+	}
 	
 	public boolean MovableThrough(){
 		return true;
 	}
 	
 	public void Accept(Thing t){
-		System.out.println("Something arrives to the switch.\tCall if(t.AbleToTriggerSwitch()) => hols.setOpen(true)");
-
 		if (t.AbleToTriggerSwitch()){
-			foreach (var hole in holes){
-				hole.setOpen(true);
+			System.out.println("A box arrives to the switch.");
+			for(int i = 0; i< numberOfHoles; i++){
+				holes[i].setOpen(true);
 			}
 		}
 	}
 	
 	public void Remove(Thing t){
-		System.out.println("Something leaves the switch.\tCall if(t.AbleToTriggerSwitch()) => hole.setOpen(false)");
-
 		if (t.AbleToTriggerSwitch()){
-			foreach (var hole in holes){
-				hole.setOpen(false);
+			System.out.println("A box leaves the switch.");
+			for(int i = 0; i< numberOfHoles; i++){
+				holes[i].setOpen(false);
 			}
 		}
 	}

@@ -8,22 +8,24 @@ public class Field {
 	}
 	
 	public void Accept(Thing t){
-		
+		this.thing = t;
+		t.setField(this);
 	}
 	
 	public void Remove(Thing t){
-		
+		this.thing = null;
+
 	}
 	
 	public Field GetNeighbor(Direction d){
-		return null;
+		return neighbor[d.ordinal()];
 	}
 	
 	public void SetNeighbor(Direction d, Field f){
-		
+		neighbor[d.ordinal()] = f;
 	}
 	
 	public Thing GetCurrentThing(){
-		return null;
+		return thing;
 	}
 }
