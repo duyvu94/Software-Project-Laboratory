@@ -21,7 +21,7 @@ public class Thing {
 		this.field = field;
 	}
 
-	public boolean Pushed(Direction d, Worker w){
+	public boolean Pushed(Direction d, Worker w, int totalFiction){
 		return true;
 	}
 	

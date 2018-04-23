@@ -5,7 +5,11 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Game {
-	private Storage storage;
+	public Storage storage;
+	
+	public Game(){
+		
+	}
 	
 	public void startGame(){
 		System.out.println("Start game");
@@ -36,18 +40,39 @@ public class Game {
 			String command[] = text.split(" ");
 			switch (command[0]){
 				case "LoadMap":
-					game.LoadMap(command[1]);
+					game.ChooseLevel(Integer.parseInt(command[1]), 0);
 					System.out.println("Map is loaded!");
 					break;
-				case "ChooseLevel":
-					game.ChooseLevel(command[1]);
-					break;
 				case "Connect":
-					storage.ConnectFields(command[1], command[2], command[3]);
+					game.storage.ConnectFields(Integer.parseInt(command[2]), Integer.parseInt(command[4]), command[5]);
 					break;
 				case "Create":
-					storage.ConnectFields(command[1], command[2], command[3]);
+					game.storage.Create(command);
 					break;
+				case "Wire":
+					game.storage.Wire(Integer.parseInt(command[1]), Integer.parseInt(command[2]));
+					break;
+				case "ViewMap":
+					//need to do this
+					break;
+				case "PutOil":
+					if (game.storage.getPlayers()[Integer.parseInt(command[1])-1].PutOil())
+						System.out.println("Oil can be put on "+ command[1] +"’s position");
+					else
+						System.out.println("Oil can't be put on "+ command[1] +"’s position");
+					
+					break;
+				case "PutHoney":
+					if (game.storage.getPlayers()[Integer.parseInt(command[1])-1].PutHoney())
+						System.out.println("Honey can be put on "+ command[1] +"’s position");
+					else 
+						System.out.println("Honey can't be put on "+ command[1] +"’s position");
+					break;
+				case "MoveWorker":
+					game.storage.getPlayers()[Integer.parseInt(command[1])-1].Move(Direction.right);
+					break;
+				case "Exit":
+					return;
 				default:
 					System.out.println("Unknown command!");
 					return;
