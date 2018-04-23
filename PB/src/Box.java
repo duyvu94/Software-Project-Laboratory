@@ -9,6 +9,8 @@ public class Box extends Thing{
 	public boolean Pushed(Direction d, Worker w, int totalFiction){
 		System.out.println("Box is pushed");
 		Field field = getField();
+		//System.out.println(field.GetFriction() + totalFiction +" " + w.getStrength());
+		
 		if (field.GetFriction() + totalFiction > w.getStrength())
 			return false;
 		Field nextField = field.GetNeighbor(d);

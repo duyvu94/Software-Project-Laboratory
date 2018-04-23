@@ -8,6 +8,6 @@ public class Wall extends Field{
 	public String ToString(){
 		if (GetCurrentThing() != null)
 			return GetCurrentThing().ToString();
-		else return "W";
+		else return "X";
 	}
 }

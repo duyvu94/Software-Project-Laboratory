@@ -77,8 +77,7 @@ public class Storage {
 				fields[location].Accept(w);
 				break;
 			case "Hole":
-				Hole hole = new Hole();
-				hole.setOpen(command[5] == "open" ? true: false);
+				Hole hole = new Hole(command[5] == "open" ? true: false);
 				hole.setId(id);
 				holesList.add(hole);
 				fields[location] = hole;
@@ -101,6 +100,8 @@ public class Storage {
 			case "Switch":
 				Switch swi = new Switch();
 				swi.setId(id);
+				if (fields[location].GetCurrentThing() != null)
+					swi.Accept(fields[location].GetCurrentThing());
 				switchesList.add(swi);
 				fields[location] = swi;
 				ConnectFields(location, location+1, "right");
@@ -134,6 +135,8 @@ public class Storage {
 	//	3 = lefele
 	//iranyba kapcsoljuk az elso mezot a masodikhoz.
 	public void ConnectFields(int field1, int field2, String dir){
+		if (fields[field1] == null)
+			return;
 		if (dir == "left")
 			fields[field1].SetNeighbor(Direction.left, fields[field2]);
 		else

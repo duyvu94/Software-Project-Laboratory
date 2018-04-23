@@ -45,7 +45,7 @@ public class Game {
 			switch (command[0]){
 				case "LoadMap":
 					game.LoadMap(command[1]);
-					System.out.println("Map is loaded!");
+					System.out.println("Map is loaded");
 					break;
 					
 				case "Connect":

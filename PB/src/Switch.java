@@ -12,8 +12,9 @@ public class Switch extends Field{
 	}
 	
 	public void Accept(Thing t){
+		super.Accept(t);
 		if (t.AbleToTriggerSwitch()){
-			System.out.println("A box arrives to the switch.");
+			//System.out.println("A box arrives to the switch.");
 			for(int i = 0; i< numberOfHoles; i++){
 				holes[i].setOpen(true);
 			}

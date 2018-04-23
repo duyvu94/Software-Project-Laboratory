@@ -2,18 +2,29 @@
 public class Hole extends Field{
 	private boolean isOpen = true;
 	
+	public Hole(boolean status){
+		isOpen = status;
+	}
+	
 	public boolean MovableThrough(){
 		return true;
 	}
 	
 	public void Accept(Thing t){
-		System.out.println("Something entered a Hole! If the Hole is in open state, that may be a problem for you...");
+		if (!isOpen){
+			super.Accept(t);
+		}
+		if (t.AbleToTriggerSwitch())
+			System.out.println("Box goes to hole");
+		else
+			System.out.println("Worker goes to hole");
 		if (isOpen)
 			t.GoToHole();
 	}
 
 	public void setOpen(boolean status){
-		System.out.println("Hole's state has been changed");
+		if (!status)
+			System.out.println("Hole is closed");
 		isOpen = status;
 	}
 	
