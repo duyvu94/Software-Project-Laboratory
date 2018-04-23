@@ -1,0 +1,12 @@
+Map is loaded
+The fields are connected
+The fields are connected
+The fields are connected
+The fields are connected
+Worker 1 created successfully
+Box 1 created successfully
+WB.
+Box is pushed
+Worker moved
+.WB
+End of testing

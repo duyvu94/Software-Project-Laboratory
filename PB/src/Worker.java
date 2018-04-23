@@ -6,7 +6,7 @@ public class Worker extends Thing{
 	 * Points that the player have
 	 */
 	private int points = 0;
-	private int strength = 5;
+	private int strength = 4;
 	private int oilContainer = 0;
 	private int honeyContainer = 0;
 	
@@ -64,7 +64,6 @@ public class Worker extends Thing{
 			
 			field.Remove(this);
 			nextField.Accept(this);
-			System.out.println("Worker moves successfully!");
 			return true;
 		}
 		return false;
@@ -125,5 +124,9 @@ public class Worker extends Thing{
 	public void GoToHole(){
 		System.out.println("Worker goes to hole!");
 		Die();
+	}
+	
+	public String ToString(){
+		return "W";
 	}
 }

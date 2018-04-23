@@ -1,0 +1,12 @@
+Map is loaded
+The fields are connected
+The fields are connected
+The fields are connected
+The fields are connected
+Worker 1 created successfully
+Box 1 created successfully
+WBX
+Box is pushed
+Worker can’t move
+WBX
+End of testing

@@ -1,0 +1,9 @@
+LoadMap map13.txt
+Connect 0 0 0 1 right
+Connect 0 1 0 0 left
+Create Worker 1 0 0  1 1
+Create Box 1 0 1
+ViewMap
+PutOil 1
+ViewMap
+Exit

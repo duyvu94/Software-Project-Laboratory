@@ -1,0 +1,12 @@
+Map is loaded
+The fields are connected
+The fields are connected
+The fields are connected
+The fields are connected
+Worker 1 created successfully
+Worker 2 created successfully
+WW.
+Worker can’t move
+Worker can’t move
+WW.
+End of testing

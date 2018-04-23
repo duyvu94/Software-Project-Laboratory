@@ -20,9 +20,13 @@ public class Game {
 	}
 	
 	public void ChooseLevel(int level, int numberOfPlayers) throws IOException{
+		
+	}
+	
+	public void LoadMap(String map) throws IOException{
 		storage = new Storage();
 
-		BufferedReader br = new BufferedReader(new FileReader("Map" + level + ".txt"));
+		BufferedReader br = new BufferedReader(new FileReader("c:\\Maps\\" + map));
 		try {
 			String line = br.readLine();
 			storage.LoadFields(line);
@@ -40,38 +44,55 @@ public class Game {
 			String command[] = text.split(" ");
 			switch (command[0]){
 				case "LoadMap":
-					game.ChooseLevel(Integer.parseInt(command[1]), 0);
+					game.LoadMap(command[1]);
 					System.out.println("Map is loaded!");
 					break;
+					
 				case "Connect":
 					game.storage.ConnectFields(Integer.parseInt(command[2]), Integer.parseInt(command[4]), command[5]);
+					System.out.println("The fields are connected");
 					break;
+					
 				case "Create":
 					game.storage.Create(command);
+					System.out.println(command[1]+ " " + command[2] + " created successfully");
 					break;
+					
 				case "Wire":
 					game.storage.Wire(Integer.parseInt(command[1]), Integer.parseInt(command[2]));
+					System.out.println("Hole and Switch are connected");
 					break;
+					
 				case "ViewMap":
-					//need to do this
+					System.out.println(game.storage.ViewMap());
 					break;
+					
 				case "PutOil":
-					if (game.storage.getPlayers()[Integer.parseInt(command[1])-1].PutOil())
+					if (game.storage.getPlayer(Integer.parseInt(command[1])-1).PutOil())
 						System.out.println("Oil can be put on "+ command[1] +"’s position");
 					else
 						System.out.println("Oil can't be put on "+ command[1] +"’s position");
 					
 					break;
+					
 				case "PutHoney":
-					if (game.storage.getPlayers()[Integer.parseInt(command[1])-1].PutHoney())
+					if (game.storage.getPlayer(Integer.parseInt(command[1])-1).PutHoney())
 						System.out.println("Honey can be put on "+ command[1] +"’s position");
 					else 
 						System.out.println("Honey can't be put on "+ command[1] +"’s position");
 					break;
+					
 				case "MoveWorker":
-					game.storage.getPlayers()[Integer.parseInt(command[1])-1].Move(Direction.right);
+					Worker w = game.storage.getPlayer(Integer.parseInt(command[1])-1);
+					if (w.Move(Direction.right)){
+						System.out.println("Worker "+ w.getID()  + " moved");
+					}
+					else
+						System.out.println("Worker can't moved");
+					
 					break;
 				case "Exit":
+					System.out.println("End of testing");
 					return;
 				default:
 					System.out.println("Unknown command!");

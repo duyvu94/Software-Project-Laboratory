@@ -16,4 +16,10 @@ public class Hole extends Field{
 		System.out.println("Hole's state has been changed");
 		isOpen = status;
 	}
+	
+	public String ToString(){
+		if (GetCurrentThing() != null)
+			return GetCurrentThing().ToString();
+		else return "H";
+	}
 }

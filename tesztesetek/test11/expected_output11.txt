@@ -1,0 +1,13 @@
+Map is loaded
+The fields are connected
+The fields are connected
+The fields are connected
+The fields are connected
+Worker 1 created successfully
+Box 1 created successfully
+WBF
+Box is pushed
+Worker moved
+1 has finished a box, +1 point to 1
+.WF
+End of testing

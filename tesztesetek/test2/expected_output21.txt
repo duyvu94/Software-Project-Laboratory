@@ -1,0 +1,26 @@
+Map is loaded
+The fields are connected
+The fields are connected
+The fields are connected
+The fields are connected
+The fields are connected
+The fields are connected
+The fields are connected
+The fields are connected
+The fields are connected
+The fields are connected
+Worker 1 created successfully
+Box 1 created successfully
+Worker 2 created successfully
+Box 2 created successfully
+Box 3 created successfully
+Box 4 created successfully
+WBWBBB
+Box is pushed
+Worker is died
+Box is pushed
+Box is pushed
+Box is pushed
+Worker moved
+.WBBBB
+End of testing

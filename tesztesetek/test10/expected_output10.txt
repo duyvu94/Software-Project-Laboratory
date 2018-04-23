@@ -1,0 +1,18 @@
+Map is loaded
+The fields are connected
+The fields are connected
+The fields are connected
+The fields are connected
+The fields are connected
+The fields are connected
+Worker 1 created successfully
+Box 1 created successfully
+Switch 1 created successfully
+Hole 1 created successfully
+Hole and Switch are connected
+WB.H
+Box is pushed
+Hole is closed
+Worker moved
+.WBH
+End of testing

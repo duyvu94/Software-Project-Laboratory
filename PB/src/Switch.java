@@ -28,4 +28,10 @@ public class Switch extends Field{
 			}
 		}
 	}
+	
+	public String ToString(){
+		if (GetCurrentThing() != null)
+			return GetCurrentThing().ToString();
+		else return "S";
+	}
 }

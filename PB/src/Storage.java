@@ -8,9 +8,10 @@ import java.util.List;
 public class Storage {
 	private Field fields[] = new Field[150];
 	private Game game;
-	private Worker players[] = new Worker[4];
+	private List<Worker> players = new ArrayList<Worker>();
 	private List<Hole> holesList = new ArrayList<Hole>();
 	private List<Switch> switchesList = new ArrayList<Switch>();
+	private int column = 0;
 	
 	//private 
 	
@@ -18,12 +19,12 @@ public class Storage {
 		
 	}
 	
-	public Worker[] getPlayers() {
-		return players;
+	public Worker getPlayer(int index) {
+		return players.get(index);
 	}
 
-	public void setPlayers(Worker[] players) {
-		this.players = players;
+	public void addPlayer(Worker worker){
+		players.add(worker);
 	}
 
 	//Betoltjük a mezoket a map fajlunkbol
@@ -32,7 +33,10 @@ public class Storage {
 	//	Mezes  = h
 	//	Olajos = o
 	public void LoadFields(String loadedFields){
+		column = loadedFields.length();
+		
 		for (int i = 0; i < loadedFields.length(); i++) {
+			fields[i] = new Field();
 			switch (loadedFields.charAt(i)){
 				case 'h':
 					fields[i].setFriction(3);
@@ -47,11 +51,17 @@ public class Storage {
 		}
 	}
 
-
+	public String ViewMap(){
+		String map = "";
+		for(int i = 0; i< column; i++){
+			map += fields[i].ToString();
+		}
+		return map;
+	}
 
 	public void Create(String command[]){
-		int location = Integer.parseInt(command[2]);
-		int id = Integer.parseInt(command[4]);
+		int location = Integer.parseInt(command[4]);
+		int id = Integer.parseInt(command[2]);
 		switch (command[1]){
 			case "Box":
 				Box b = new Box();
@@ -63,6 +73,7 @@ public class Storage {
 				w.setID(id);
 				w.setHoneyContainer(Integer.parseInt(command[5]));
 				w.setOilContainer(Integer.parseInt(command[6]));
+				addPlayer(w);
 				fields[location].Accept(w);
 				break;
 			case "Hole":
@@ -92,6 +103,17 @@ public class Storage {
 				swi.setId(id);
 				switchesList.add(swi);
 				fields[location] = swi;
+				ConnectFields(location, location+1, "right");
+				ConnectFields(location+1, location, "left");
+				if (location != 0){
+					ConnectFields(location-1, location, "right");
+					ConnectFields(location, location-1, "left");
+				}
+				break;
+			case "FinishPoint":
+				FinishPoint finish = new FinishPoint();
+				finish.setId(id);
+				fields[location] = finish;
 				ConnectFields(location, location+1, "right");
 				ConnectFields(location+1, location, "left");
 				if (location != 0){

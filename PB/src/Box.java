@@ -7,7 +7,7 @@ public class Box extends Thing{
 	 * The box is pushed, this may push the thing in the next field
 	 */
 	public boolean Pushed(Direction d, Worker w, int totalFiction){
-		System.out.println("Box is pushed!");
+		System.out.println("Box is pushed");
 		Field field = getField();
 		if (field.GetFriction() + totalFiction > w.getStrength())
 			return false;
@@ -49,5 +49,9 @@ public class Box extends Thing{
 	 */
 	public void GoToFinishPoint(){
 		System.out.println("Box goes to finishpoint!");
+	}
+	
+	public String ToString(){
+		return "B";
 	}
 }

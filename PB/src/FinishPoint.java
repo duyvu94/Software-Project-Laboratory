@@ -10,4 +10,10 @@ public class FinishPoint extends Field{
 	public boolean MovableThrough(){
 		return true;
 	}
+	
+	public String ToString(){
+		if (GetCurrentThing() != null)
+			return GetCurrentThing().ToString();
+		else return "F";
+	}
 }

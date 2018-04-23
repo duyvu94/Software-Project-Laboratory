@@ -1,0 +1,16 @@
+LoadMap map4.txt
+Connect 0 0 0 1 right
+Connect 0 1 0 0 left
+Connect 0 1 0 2 right
+Connect 0 2 0 1 left
+Connect 0 2 0 3 right
+Connect 0 3 0 2 left
+Connect 0 3 0 4 right
+Connect 0 4 0 3 left
+Create Worker 1 0 0 0 0
+Create Box 1 0 1
+Create Box 2 0 2
+ViewMap
+MoveWorker right
+ViewMap
+Exit

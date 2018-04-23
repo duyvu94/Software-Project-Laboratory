@@ -51,4 +51,10 @@ public class Field {
 	public Thing GetCurrentThing(){
 		return thing;
 	}
+	
+	public String ToString(){
+		if (thing != null)
+			return thing.ToString();
+		else return ".";
+	}
 }

@@ -1,0 +1,10 @@
+Map is loaded
+The fields are connected
+The fields are connected
+Worker 1 created successfully
+Hole 1 created successfully
+WH
+Worker moved
+Worker is died in Hole
+.H
+End of testing

@@ -40,4 +40,8 @@ public class Thing {
 	public boolean AbleToTriggerSwitch(){
 		return false;
 	}
+	
+	public String ToString(){
+		return null;
+	}
 }

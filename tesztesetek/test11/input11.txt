@@ -1,0 +1,12 @@
+LoadMap map11.txt
+Connect 0 0 0 1 right
+Connect 0 1 0 0 left
+Connect 0 1 0 2 right
+Connect 0 2 0 1 left
+Create Worker 1 0 0 0 0
+Create Box 1 0 1
+Create FinishPoint 1 0 2
+ViewMap
+MoveWorker 1 right
+ViewMap
+Exit
