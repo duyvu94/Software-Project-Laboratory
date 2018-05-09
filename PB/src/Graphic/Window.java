@@ -18,7 +18,7 @@ public class Window extends JFrame{
 	public void SetUp(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setPreferredSize(new Dimension(820,850));
-		getContentPane().add(playing.getPanel(), BorderLayout.CENTER);
+		getContentPane().add(menu.getPanel(), BorderLayout.CENTER);
 		
 		pack();
 		setVisible(true);
