@@ -10,6 +10,8 @@ public class FinishPoint extends Field{
 		if (t.AbleToTriggerSwitch()){
 			t.GoToFinishPoint();
 		}
+		else
+			super.Accept(t);
 	}
 	
 	public boolean MovableThrough(){

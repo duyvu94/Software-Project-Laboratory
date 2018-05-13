@@ -4,13 +4,26 @@ public class Thing {
 	private Field field;
 	private int x, y;
 	private Storage storage;
+	private boolean isDisplayed; 
 	
 	public Thing(int x, int y, Storage s){
 		this.x = x;
 		this.y = y;
 		storage = s;
+		isDisplayed = true;
 	}
 	
+	
+	public boolean isDisplayed() {
+		return isDisplayed;
+	}
+
+
+	public void setDisplayed(boolean isDisplayed) {
+		this.isDisplayed = isDisplayed;
+	}
+
+
 	public Storage getStorage() {
 		return storage;
 	}

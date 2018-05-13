@@ -31,7 +31,8 @@ public class Box extends Thing{
 			
 			field.Remove(this);
 			nextField.Accept(this);
-			
+			setX(nextField.getX());
+			setY(nextField.getY());
 			return true;
 		}
 		return false;
@@ -48,7 +49,8 @@ public class Box extends Thing{
 	 * Lefut, ha a doboz lyukhoz er
 	 */
 	public void GoToHole(){
-		
+		setDisplayed(false);
+		getStorage().setNumberOfAliveBoxes(getStorage().getNumberOfAliveBoxes()-1);
 		System.out.println("Box goes to hole!");
 		
 	}
@@ -58,8 +60,10 @@ public class Box extends Thing{
 	 * Lefut, ha a dobozt celhelyre sikerult juttatni
 	 */
 	public void GoToFinishPoint(){
-		  AddPointToWorker();
-		  System.out.println("Box goes to finishpoint");
+		setDisplayed(false);
+		AddPointToWorker();
+		getStorage().setNumberOfAliveBoxes(getStorage().getNumberOfAliveBoxes()-1);
+		System.out.println("Box goes to finishpoint");
 	 }
 	
 	public String ToString(){

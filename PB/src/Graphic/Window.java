@@ -17,15 +17,25 @@ public class Window extends JFrame{
 	
 	public void SetUp(){
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setPreferredSize(new Dimension(820,850));
-		getContentPane().add(menu.getPanel(), BorderLayout.CENTER);
-		
+		setPreferredSize(new Dimension(1350,840));
+		setMenu();
 		pack();
 		setVisible(true);
 	}
 	
+	public void setPlaying(){
+		setContentPane(playing);
+		playing.requestFocusInWindow();
+		validate();
+	}
+	
+	public void setMenu(){
+		setContentPane(menu.getPanel());
+		validate();
+	}
+	
 	public void Run(){
-		menu.NewGame();
+		
 	}
 
 	public Menu getMenu() {

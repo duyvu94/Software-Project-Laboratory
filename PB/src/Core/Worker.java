@@ -13,11 +13,20 @@ public class Worker extends Thing{
 	private int strength = 4;
 	private int oilContainer = 0;
 	private int honeyContainer = 0;
+	private int ID = 0;
 	
 	public Worker(int x, int y, Storage s){
 		super(x, y, s);
 	}
 	
+	public int getID() {
+		return ID;
+	}
+
+	public void setID(int iD) {
+		ID = iD;
+	}
+
 	public int getStrength() {
 		return strength;
 	}
@@ -73,6 +82,8 @@ public class Worker extends Thing{
 		   }
 		   field.Remove(this);	// Move to the new field
 		   nextField.Accept(this);
+		   setX(nextField.getX());
+		   setY(nextField.getY());
 		   return true;
 		  }
 		  return false;
@@ -100,7 +111,8 @@ public class Worker extends Thing{
 	 * Ez fut le, mikor meghal a munkas
 	 */
 	public void Die(){
-		
+		setDisplayed(false);
+		getStorage().setNumberOfAliveWorkers(getStorage().getNumberOfAliveWorkers()-1);
 	}
 	
 	/**
@@ -123,7 +135,8 @@ public class Worker extends Thing{
 			
 			field.Remove(this);
 			nextField.Accept(this);
-			
+			setX(nextField.getX());
+			setY(nextField.getY());
 			return true;
 		}
 		Die();	//ha a munkas dobozok koze/ dobozok és egy fal koze szorul, meghal
@@ -149,6 +162,6 @@ public class Worker extends Thing{
 	 * Give point to the player
 	 */
 	public void PlusPoint(){
-		  
+		  points++;
 	 }
 }

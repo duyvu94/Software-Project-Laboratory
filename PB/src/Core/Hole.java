@@ -29,6 +29,9 @@ public class Hole extends Field{
 		  t.GoToHole();
 	}
 	
+	public boolean isOpened(){
+		return isOpen;
+	}
 	/**
 	 * Set the status of the hole (open/close)
 	 */

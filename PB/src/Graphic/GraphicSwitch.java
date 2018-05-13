@@ -1,31 +1,43 @@
 package Graphic;
 
+import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.URL;
 
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 import Core.Switch;
 
 public class GraphicSwitch implements Drawable{
 	private Switch sw;
-	private JLabel img;
+	private BufferedImage image, backgroundImage;
 	
 	public GraphicSwitch(Switch s){
-		img = new JLabel(new ImageIcon(getClass().getClassLoader().getResource("field.jpg")));
 		sw = s;
+		URL resource = getClass().getClassLoader().getResource("switch.png");
+		URL resource1 = getClass().getClassLoader().getResource("field.jpg");
+        try {
+            image = ImageIO.read(resource);
+            backgroundImage = ImageIO.read(resource1);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+
+	public BufferedImage getImage(){
+		return image;
 	}
 	
-	public JLabel getImage(){
-		return img;
-	}
-	
-	public void Draw(){
+	public void Draw(Graphics g, JPanel panel) {
 		int x = 800/sw.getStorage().getHeight(); 
 		int y = 800/sw.getStorage().getWidth();
-		img.setBounds(sw.getY()*y, sw.getX()*x, y, x);
+		g.drawImage(backgroundImage, sw.getY()*y, sw.getX()*x, y, x, panel);
+		g.drawImage(image, sw.getY()*y, sw.getX()*x, y, x, panel);
 		
-		ImageIcon icon = new ImageIcon(getClass().getClassLoader().getResource("switch.png"));
-		img.setIcon(new ImageIcon(icon.getImage().getScaledInstance(y, x, Image.SCALE_SMOOTH)));
 	}
 }

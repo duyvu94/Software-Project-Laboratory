@@ -12,6 +12,8 @@ public class Storage {
 	private List<Worker> players = new ArrayList<Worker>();
 	private List<Hole> holesList = new ArrayList<Hole>();
 	private List<Switch> switchesList = new ArrayList<Switch>();
+	private int numberOfAliveWorkers = 0;
+	private int numberOfAliveBoxes = 0;
 	
 	
 	/**
@@ -21,6 +23,22 @@ public class Storage {
 		
 	}
 	
+	public int getNumberOfAliveWorkers() {
+		return numberOfAliveWorkers;
+	}
+
+	public void setNumberOfAliveWorkers(int numberOfAliveWorkes) {
+		this.numberOfAliveWorkers = numberOfAliveWorkes;
+	}
+
+	public int getNumberOfAliveBoxes() {
+		return numberOfAliveBoxes;
+	}
+
+	public void setNumberOfAliveBoxes(int numberOfAliveBoxes) {
+		this.numberOfAliveBoxes = numberOfAliveBoxes;
+	}
+
 	public void setSize(int x, int y){
 		sizeX = x;
 		sizeY = y;
@@ -37,7 +55,14 @@ public class Storage {
 	 * get the worker based on the index
 	 */
 	public Worker getPlayer(int index) {
-		return players.get(index);
+		if (index < players.size())
+			return players.get(index);
+		else 
+			return null;
+	}
+	
+	public List<Worker> getPlayers() {
+		return players;
 	}
 
 	/**
@@ -58,11 +83,13 @@ public class Storage {
 			case 'S': 
 				Switch s = new Switch(i, j); 
 				s.setStorage(this);
+				switchesList.add(s);
 				fields[i][j] = s;
 				return new GraphicSwitch(s);
 			case 'H': 
 				Hole hole = new Hole(i, j, true);
 				hole.setStorage(this);
+				holesList.add(hole);
 				fields[i][j] = hole; 
 				return new GraphicHole(hole);
 			case 'F': 
@@ -76,6 +103,20 @@ public class Storage {
 				fields[i][j] = field;
 				return new GraphicField(field);
 		}
+	}
+	
+	public void ConnectAllFields(){
+		for (int i = 0; i < sizeX; i++)
+			for (int j = 0; j < sizeY; j++){
+				if (i > 0)
+					fields[i][j].SetNeighbor(Direction.up, fields[i-1][j]);
+				if (j > 0)
+					fields[i][j].SetNeighbor(Direction.left, fields[i][j-1]);
+				if (i < sizeX-1)
+					fields[i][j].SetNeighbor(Direction.down, fields[i+1][j]);
+				if (j < sizeY-1)
+					fields[i][j].SetNeighbor(Direction.right, fields[i][j+1]);
+			}
 	}
 	
 	public Field getField(int x, int y){
