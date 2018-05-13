@@ -41,6 +41,9 @@ public class Playing extends JPanel{
 		this.workersList = workersList;
 	}
 	
+	/**
+	 * Az egyes objektumokhoz az osszes kep betoltese (munkasok, doboz, szakadek, stb stb.)
+	 */
 	public void loadResource(){
 		try{
 			layout= ImageIO.read(getClass().getClassLoader().getResource("layout.png"));
@@ -72,6 +75,12 @@ public class Playing extends JPanel{
 		setOpaque(true);
 	}
 	
+	/**
+	 * Valtozas eseten:
+	 * Ha vege a jateknak, akkor a vegso kepernyot kapjuk
+	 * Ha viszont meg nincs vege, akkor updateljuk a munkasokhoz tartozo informaciokat
+	 * Illetve a palyan levo osszes elemet ujrarajzolunk
+	 */
 	@Override
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);

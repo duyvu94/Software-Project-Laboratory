@@ -42,6 +42,11 @@ public class Game implements KeyListener{
 		window.setMenu();
 	}
 	
+	/**
+	 * Egy uj jatek inditasakor itt tortenik meg a palya betoltese, es annak
+	 * osszes funkcionalitasanak beallitasa
+	 * Minden ehhez szukseges informacio a mapX.txt fajlokban talalhato meg.
+	 */
 	public void ChooseLevel(int level, int numberOfPlayers) throws IOException{
 		storage = new Storage();
 		ClassLoader classLoader = getClass().getClassLoader();
@@ -133,6 +138,9 @@ public class Game implements KeyListener{
 		this.playing = playing;
 	}
 
+	/**
+	 * A munkasok iranyitasa, billentyuzeten a gomb-kiosztas megvalositasa
+	 */
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		if (arg0.getKeyCode() == KeyEvent.VK_ESCAPE){
