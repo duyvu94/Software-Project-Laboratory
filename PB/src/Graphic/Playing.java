@@ -21,7 +21,9 @@ public class Playing extends JPanel{
 	private List<Drawable> drawablesList;
 	private boolean isPlaying;
 	private List<Worker> workersList;
-	private BufferedImage layout;
+	static public BufferedImage layout, fieldImage, boxImage, closedHoleImage, finishedImage,
+		holeImage, honeyImage, oilImage, switchImage, wallImage, worker0Image, worker1Image,
+		worker2Image, worker3Image, worker4Image;
 	
 	public List<Drawable> getDrawablesList() {
 		return drawablesList;
@@ -38,18 +40,36 @@ public class Playing extends JPanel{
 	public void setWorkersList(List<Worker> workersList) {
 		this.workersList = workersList;
 	}
+	
+	public void loadResource(){
+		try{
+			layout= ImageIO.read(getClass().getClassLoader().getResource("layout.png"));
+			fieldImage = ImageIO.read(getClass().getClassLoader().getResource("field.jpg"));
+			boxImage = ImageIO.read(getClass().getClassLoader().getResource("box.png"));
+			closedHoleImage = ImageIO.read(getClass().getClassLoader().getResource("closedhole.png"));
+			finishedImage= ImageIO.read(getClass().getClassLoader().getResource("finish.png"));
+			holeImage = ImageIO.read(getClass().getClassLoader().getResource("hole.png"));
+			honeyImage= ImageIO.read(getClass().getClassLoader().getResource("honey.png"));
+			oilImage= ImageIO.read(getClass().getClassLoader().getResource("oil.png"));
+			switchImage= ImageIO.read(getClass().getClassLoader().getResource("switch.png"));
+			wallImage= ImageIO.read(getClass().getClassLoader().getResource("wall.png"));
+			worker0Image= ImageIO.read(getClass().getClassLoader().getResource("worker0.png"));
+			worker1Image= ImageIO.read(getClass().getClassLoader().getResource("worker1.png"));
+			worker2Image= ImageIO.read(getClass().getClassLoader().getResource("worker2.png"));
+			worker3Image= ImageIO.read(getClass().getClassLoader().getResource("worker3.png"));
+			worker4Image= ImageIO.read(getClass().getClassLoader().getResource("worker4.png"));
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	public Playing(){
+		loadResource();
 		drawablesList = new ArrayList<Drawable>();
 		setFocusable(true);
 		setLayout(null);
 		setOpaque(true);
-		URL resource = getClass().getClassLoader().getResource("layout.png");
-		try {
-			layout = ImageIO.read(resource);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 	}
 	
 	@Override

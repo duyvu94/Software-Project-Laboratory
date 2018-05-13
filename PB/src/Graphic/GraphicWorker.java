@@ -15,17 +15,9 @@ import Core.Worker;
 
 public class GraphicWorker implements Drawable{
 	private Worker worker;
-	private BufferedImage image;
 	
 	public GraphicWorker(Worker w){
 		worker = w;
-		URL resource = getClass().getClassLoader().getResource("worker"+worker.getID()+".png");
-        try {
-            image = ImageIO.read(resource);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-		
 	}
 	
 	public void Draw(Graphics g, JPanel panel) {
@@ -33,6 +25,17 @@ public class GraphicWorker implements Drawable{
 			return;
 		int x = 800/worker.getStorage().getHeight(); 
 		int y = 800/worker.getStorage().getWidth();
+		
+		BufferedImage image;
+		
+		switch(worker.getID()){
+			case 1: image = Playing.worker1Image; break;
+			case 2: image = Playing.worker2Image; break;
+			case 3: image = Playing.worker3Image; break;
+			case 4: image = Playing.worker4Image; break;
+			default: image = Playing.worker0Image; break;
+		}
+		
 		g.drawImage(image, worker.getY()*y, worker.getX()*x, y, x, panel);
 		
 	}

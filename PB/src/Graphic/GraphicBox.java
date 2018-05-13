@@ -13,20 +13,9 @@ import Core.Box;
 
 public class GraphicBox implements Drawable{
 	private Box box;
-	private BufferedImage image;
 	
 	public GraphicBox(Box b){
 		box = b;
-		URL resource = getClass().getClassLoader().getResource("box.png");
-        try {
-            image = ImageIO.read(resource);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-	}
-
-	public BufferedImage getImage(){
-		return image;
 	}
 	
 	public void Draw(Graphics g, JPanel panel) {
@@ -34,7 +23,7 @@ public class GraphicBox implements Drawable{
 			return;
 		int x = 800/box.getStorage().getHeight(); 
 		int y = 800/box.getStorage().getWidth();
-		g.drawImage(image, box.getY()*y, box.getX()*x, y, x, panel);
+		g.drawImage(Playing.boxImage, box.getY()*y, box.getX()*x, y, x, panel);
 		
 	}
 

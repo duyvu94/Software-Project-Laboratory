@@ -17,26 +17,15 @@ import Core.Wall;
 
 public class GraphicWall implements Drawable{
 	private Wall wall;
-	private BufferedImage image;
 	
 	public GraphicWall(Wall w){
 		wall = w;
-		URL resource = getClass().getClassLoader().getResource("wall.png");
-        try {
-            image = ImageIO.read(resource);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 	}
 
-	public BufferedImage getImage(){
-		return image;
-	}
-	
 	public void Draw(Graphics g, JPanel panel) {
 		int x = 800/wall.getStorage().getHeight(); 
 		int y = 800/wall.getStorage().getWidth();
-		g.drawImage(image, wall.getY()*y, wall.getX()*x, y, x, panel);
+		g.drawImage(Playing.wallImage, wall.getY()*y, wall.getX()*x, y, x, panel);
 		
 	}
 }
