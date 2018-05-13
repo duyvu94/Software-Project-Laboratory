@@ -107,7 +107,7 @@ public class Playing extends JPanel{
 	    for (int i = 0; i< 4; i++)
 	    	if (workersList.size() > i){
 		    	g.drawString(workersList.get(i).getPoints()+"", 1060, 37+i*200);
-		    	g.drawString(workersList.get(i).getOilContainer()+"", 115, 37+i*200);
+		    	g.drawString(workersList.get(i).getOilContainer()+"", 1150, 37+i*200);
 		    	g.drawString(workersList.get(i).getHoneyContainer()+"", 1250, 37+i*200);
 		    }
 		for(Drawable d : drawablesList){
